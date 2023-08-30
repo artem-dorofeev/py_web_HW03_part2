@@ -16,11 +16,13 @@ def factorize(*number):
     for i in number:
         factorize_num = Number(i)
         result_list.append(factorize_num.dividing_of_numbers())
-    return result_list
+    
+    return [*result_list]
 
 
-a = factorize(128, 255, 99999, 10651060)
+a, b, c, d = factorize(128, 255, 99999, 10651060)
 print(a)
+print(b)
 
 
 """
