@@ -1,9 +1,25 @@
 from multiprocessing import cpu_count
 from threading import Thread
-from datetime import datetime
+from time import time
+import sys
+from multiprocessing import Process
 
 # num_cpu = cpu_count()
 # print(num_cpu)
+
+
+
+# class MyProcess(Process):
+
+#     def __init__(self, group=None, target=None, name=None, args=(), kwargs=None, *, daemon=None):
+#         super().__init__(group=group, target=target, name=name, daemon=daemon)
+#         self.args = args
+#         self.kwargs = kwargs  # here could be data
+
+#     def run(self) -> None:
+#         self.kwargs.get('log')(f"args: {self.args}")
+#         sys.exit(0)
+
 
 
 class Number():
@@ -20,27 +36,29 @@ class Number():
 
 
 def factorize(number):
-    # result_list = []
-    start_time = datetime.now()
     factorize_num = Number(number)
     result = factorize_num.dividing_of_numbers()
-    end_time = datetime.now()
-    time_result = end_time - start_time
-    print(f"{number} - {result} time for this operation {time_result}")
+    # print(f"{number} - {result} time for this operation {time_result}")
     return result
 
 
 if __name__ == '__main__':
 
-    a = [128, 255, 99999, 10651060]
-    start_time_all = datetime.now()
+    thr = []
+    # a = [99999, 2555555, 999999, 1006510600]
+    a = (128, 255, 99999, 10651060)
+    st_time = time()
 
     for i in a:
         
         th = Thread(target=factorize, args=(i, ))
         th.start()
+        # print(th)
+        thr.append(th)
 
-    end_time_all = datetime.now()
-    time_result_all = end_time_all - start_time_all
+    # [th.join() for th in thr]
 
-    print(f"time for all process - {time_result_all}")
+    ft_time = time()
+    delta_time = ft_time - st_time
+
+    print(f"Test with Thread - {delta_time}")
