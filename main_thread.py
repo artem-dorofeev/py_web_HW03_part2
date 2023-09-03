@@ -1,25 +1,5 @@
-from multiprocessing import cpu_count
 from threading import Thread
 from time import time
-import sys
-from multiprocessing import Process
-
-# num_cpu = cpu_count()
-# print(num_cpu)
-
-
-
-# class MyProcess(Process):
-
-#     def __init__(self, group=None, target=None, name=None, args=(), kwargs=None, *, daemon=None):
-#         super().__init__(group=group, target=target, name=name, daemon=daemon)
-#         self.args = args
-#         self.kwargs = kwargs  # here could be data
-
-#     def run(self) -> None:
-#         self.kwargs.get('log')(f"args: {self.args}")
-#         sys.exit(0)
-
 
 
 class Number():
@@ -38,7 +18,6 @@ class Number():
 def factorize(number):
     factorize_num = Number(number)
     result = factorize_num.dividing_of_numbers()
-    # print(f"{number} - {result} time for this operation {time_result}")
     return result
 
 
@@ -53,10 +32,8 @@ if __name__ == '__main__':
         
         th = Thread(target=factorize, args=(i, ))
         th.start()
-        # print(th)
         thr.append(th)
 
-    # [th.join() for th in thr]
 
     ft_time = time()
     delta_time = ft_time - st_time
