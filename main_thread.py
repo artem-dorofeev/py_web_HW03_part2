@@ -12,6 +12,7 @@ class Number():
             if self.number % i == 0:
                 result.append(i)
         result.append(self.number) # додаю селф останнім елементом списку
+        print(result)
         return result
 
 
@@ -24,7 +25,7 @@ def factorize(number):
 if __name__ == '__main__':
 
     thr = []
-    # a = [99999, 2555555, 999999, 1006510600]
+    # a = [128, 255555, 999999, 1006510600]
     a = (128, 255, 99999, 10651060)
     st_time = time()
 
@@ -34,6 +35,7 @@ if __name__ == '__main__':
         th.start()
         thr.append(th)
 
+    [th.join() for th in thr]
 
     ft_time = time()
     delta_time = ft_time - st_time
